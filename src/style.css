@@ -572,17 +572,80 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .specialties-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
 @media (max-width: 992px) {
   .hero-title { font-size: 3rem; }
-  .profile-container { flex-direction: column; }
-  .contact-grid { grid-template-columns: 1fr; }
+  .hero { height: 90vh; }
+  .profile-container { flex-direction: column; gap: 2rem; }
+  .profile-image { max-width: 500px; }
+  .contact-grid { grid-template-columns: 1fr; border-radius: 20px; }
+  .specialties-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .section-title { font-size: 2rem; }
+  .section-subtitle { margin-bottom: 2rem; }
 }
 
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  .nav-links.active { display: flex; }
   .mobile-menu-btn { display: flex; }
   .hero-title { font-size: 2.5rem; }
-  .hero-actions { flex-direction: column; }
+  .hero-subtitle { font-size: 1rem; letter-spacing: 1px; }
+  .hero-description { font-size: 1rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100%; max-width: 300px; }
+  .hero { height: 85vh; min-height: 500px; }
   .section { padding: 3rem 0; }
+  .profile-image img { border-radius: 16px; }
+  .experience-badge { padding: 1rem; right: -10px; bottom: -10px; }
+  .exp-number { font-size: 2rem; }
+  .specialty-img-container { height: 180px; }
+  .specialty-content { padding: 1.5rem; }
+  .specialty-content h3 { font-size: 1.25rem; }
   .contact-info, .contact-form-container { padding: 2rem; }
+  .contact-grid { gap: 0; border-radius: 16px; }
+  .contact-item { gap: 1rem; }
+  .contact-item .icon { padding: 0.75rem; }
+  .contact-item .icon svg { width: 20px; height: 20px; }
+  .contact-form h3 { font-size: 1.5rem; }
+  .facility-item { padding: 0.75rem 1.25rem; font-size: 0.9rem; }
+  .container { padding: 0 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .hero { height: 90vh; min-height: 450px; }
+  .hero-title { font-size: 1.75rem; }
+  .hero-subtitle { font-size: 0.85rem; }
+  .hero-description { font-size: 0.95rem; }
+  .section-title { font-size: 1.6rem; }
+  .profile-designation { font-size: 1rem; }
+  .responsibilities { padding: 1rem; }
+  .responsibilities h4 { font-size: 1rem; }
+  .responsibilities li { font-size: 0.85rem; }
+  .specialties-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .specialty-img-container { height: 160px; }
+  .specialty-card { border-radius: 14px; }
+  .logo-text { font-size: 1.2rem; }
+  .section { padding: 2.5rem 0; }
+  .contact-info, .contact-form-container { padding: 1.5rem; }
+  .form-group input, .form-group textarea { padding: 0.8rem; font-size: 0.95rem; }
+  .container { padding: 0 1rem; }
+  .experience-badge { padding: 0.75rem; right: -5px; bottom: -5px; }
+  .exp-number { font-size: 1.5rem; }
+  .exp-text { font-size: 0.75rem; }
+  .facility-item { width: 100%; justify-content: center; }
 }

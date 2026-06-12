@@ -42,17 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (mobileBtn) {
     mobileBtn.addEventListener('click', () => {
-      // Very basic mobile menu toggle (would need CSS to support .active)
-      // Since we hid it with display: none, let's toggle a class
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '100%';
-      navLinks.style.left = '0';
-      navLinks.style.width = '100%';
-      navLinks.style.background = 'var(--white)';
-      navLinks.style.padding = '1rem';
-      navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+      navLinks.classList.toggle('active');
     });
   }
 
