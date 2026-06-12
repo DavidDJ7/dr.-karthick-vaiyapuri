@@ -46,6 +46,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Scroll reveal animations
+  const revealElements = document.querySelectorAll('.section');
+  
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  revealElements.forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+
   // Basic form submission handler
   const form = document.querySelector('.contact-form');
   if (form) {
