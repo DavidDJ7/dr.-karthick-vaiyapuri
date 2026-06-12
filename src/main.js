@@ -4,7 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
 
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+
+    const hero = document.querySelector('.hero-mesh');
+    if (hero) {
+      const offset = window.scrollY * 0.15;
+      hero.style.transform = `translateY(${offset}px)`;
+    }
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -19,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
           navLinks.classList.remove('active');
         }
         window.scrollTo({
-          top: targetElement.offsetTop - 80,
+          top: targetElement.offsetTop - 90,
           behavior: 'smooth'
         });
       }
@@ -43,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   revealElements.forEach(el => revealObserver.observe(el));
 
@@ -57,34 +63,33 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCounters();
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.4 });
 
   if (counters.length > 0) {
-    counterObserver.observe(counters[0].closest('.stats-grid') || counters[0]);
+    const statsGrid = counters[0].closest('.stats-grid');
+    if (statsGrid) counterObserver.observe(statsGrid);
   }
 
   function animateCounters() {
     counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target') || counter.textContent.replace(/[+,]/g, ''), 10);
+      const raw = counter.textContent.replace(/[+,]/g, '');
+      const target = parseInt(raw, 10);
+      if (isNaN(target)) return;
       const duration = 2500;
       const steps = 60;
       const increment = target / steps;
       let current = 0;
-
-      if (counter.dataset.target) {
-        counter.dataset.target = target;
-      }
-
       const suffix = counter.textContent.includes('+') ? '+' : '';
-      const isComma = target >= 1000;
+      const useLocale = target >= 1000;
 
       function update() {
         current += increment;
         if (current >= target) {
-          counter.textContent = isComma ? target.toLocaleString() + suffix : target + suffix;
+          counter.textContent = useLocale ? target.toLocaleString() + suffix : target + suffix;
           return;
         }
-        counter.textContent = isComma ? Math.floor(current).toLocaleString() + suffix : Math.floor(current) + suffix;
+        const val = Math.floor(current);
+        counter.textContent = useLocale ? val.toLocaleString() + suffix : val + suffix;
         requestAnimationFrame(update);
       }
 
@@ -98,6 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       alert('Thank you for your message! Dr. Karthick Vaiyapuri will get back to you soon.');
       form.reset();
+    });
+  }
+
+  const heroGeo = document.querySelector('.hero-geo');
+  if (heroGeo) {
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 10;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      heroGeo.style.transform = `translate(${x}px, ${y}px)`;
     });
   }
 });
