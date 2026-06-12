@@ -459,14 +459,19 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
 }
 
-.card-hospital {
-  bottom: 10%; left: -20px;
+.card-hospital-1 {
+  bottom: 25%; left: -20px;
   animation: cardFloat 3s ease-in-out infinite;
 }
 
+.card-hospital-2 {
+  bottom: 5%; left: 10px;
+  animation: cardFloat 3s ease-in-out infinite 0.3s;
+}
+
 .card-fellowship {
-  top: 12%; right: -10px;
-  animation: cardFloat 3s ease-in-out infinite 0.5s;
+  top: 8%; right: -10px;
+  animation: cardFloat 3s ease-in-out infinite 0.6s;
 }
 
 @keyframes cardFloat {
