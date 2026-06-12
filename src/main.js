@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
 
-    const hero = document.querySelector('.hero-mesh');
-    if (hero) {
-      const offset = window.scrollY * 0.15;
-      hero.style.transform = `translateY(${offset}px)`;
+    const heroMesh = document.querySelector('.hero-mesh');
+    if (heroMesh) {
+      const offset = window.scrollY * 0.12;
+      heroMesh.style.transform = `translateY(${offset}px)`;
     }
   });
 
@@ -109,9 +109,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroGeo = document.querySelector('.hero-geo');
   if (heroGeo) {
     document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 10;
-      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      const x = (e.clientX / window.innerWidth - 0.5) * 8;
+      const y = (e.clientY / window.innerHeight - 0.5) * 8;
       heroGeo.style.transform = `translate(${x}px, ${y}px)`;
     });
   }
+
+  const tiltCards = document.querySelectorAll('.specialty-card, .award-card, .stat-card');
+
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -6;
+      const rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 });
