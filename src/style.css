@@ -613,6 +613,132 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.25rem;
 }
 
+/* ─── QUALIFICATIONS ─── */
+.quals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.qual-card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.qual-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--blue);
+}
+
+.qual-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue-light);
+  border-radius: 12px;
+  color: var(--blue);
+  transition: all 0.4s ease;
+}
+
+.qual-card:hover .qual-icon {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.qual-card h3 {
+  font-size: 0.95rem;
+  color: var(--gray-800);
+  margin-bottom: 0.35rem;
+}
+
+.qual-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.specialities-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1.25rem 1.5rem;
+  background: var(--off-white);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-100);
+}
+
+.specialities-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  font-family: var(--font-heading);
+}
+
+.specialities-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.spec-pill {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.spec-pill:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,119,182,0.15);
+}
+
+/* ─── TREATMENTS ─── */
+.treatments-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.treatment-tag {
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  color: var(--gray-600);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.treatment-tag:hover {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,119,182,0.15);
+}
+
 /* ─── SPECIALTIES ─── */
 .specialties-grid {
   display: grid;
