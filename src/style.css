@@ -80,10 +80,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-center .section-title .title-line { margin-left: auto; margin-right: auto; }
 
+.section-header { margin-bottom: 2.5rem; }
+
 .section-subtitle {
   font-size: 1.1rem;
   color: var(--text-muted);
-  margin-bottom: 3rem;
   margin-top: 0.5rem;
   max-width: 560px;
 }
@@ -775,15 +776,44 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--white);
   border: 1px solid var(--gray-100);
   border-radius: var(--radius);
-  padding: 1.75rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
 .specialty-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
   border-color: var(--blue);
+}
+
+.spec-card-img {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+}
+
+.spec-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.06) 100%);
+}
+
+.spec-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.specialty-card:hover .spec-card-img img {
+  transform: scale(1.06);
+}
+
+.spec-card-body {
+  padding: 1.5rem 1.75rem 1.75rem;
 }
 
 .spec-icon {
@@ -794,7 +824,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--blue-light);
   border-radius: 14px;
   color: var(--blue);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   transition: all 0.4s ease;
 }
 
@@ -804,13 +834,13 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.05);
 }
 
-.specialty-card h3 {
+.spec-card-body h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: var(--gray-800);
 }
 
-.specialty-card > p {
+.spec-card-body > p {
   color: var(--text-muted);
   font-size: 0.9rem;
   line-height: 1.6;
@@ -856,6 +886,8 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
 }
+
+.section-header .section-title { margin-bottom: 0; }
 
 .facility-card {
   background: var(--white);
@@ -1105,7 +1137,9 @@ h1, h2, h3, h4, h5, h6 {
   .stat-item { border: none; }
   .contact-split { grid-template-columns: 1fr; }
   .specialties-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .spec-card-img { height: 150px; }
   .section-title { font-size: 2.1rem; }
+  .section-header { margin-bottom: 2rem; }
   .section { padding: 4rem 0; }
 }
 
@@ -1126,8 +1160,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   .nav-links.active { display: flex; }
   .mobile-menu-btn { display: flex; }
-  .hero { min-height: auto; }
-  .hero-heading { font-size: 2.5rem; }
+  .hero { min-height: auto; padding: 5rem 0 2rem; }
+  .hero-inner { min-height: auto; padding: 6rem 0 3rem; }
+  .hero-heading { font-size: 2.5rem; letter-spacing: -0.5px; }
   .hero-tag { font-size: 0.7rem; }
   .hero-sub { font-size: 0.95rem; margin-bottom: 1.5rem; max-width: 100%; }
   .hero-stats-bar { gap: 1rem; padding: 0.85rem 1.25rem; }
@@ -1135,23 +1170,29 @@ h1, h2, h3, h4, h5, h6 {
   .hero-stat-lbl { font-size: 0.7rem; }
   .hero-wave svg { height: 40px; }
   .hero-shapes { display: none; }
+  .section-title { font-size: 1.9rem; }
   .section { padding: 3rem 0; }
   .profile-banner { padding: 3rem 0 0; }
-  .stats-row { margin-top: 2rem; padding: 1.5rem 0; }
+  .stats-row { margin-top: 2rem; padding: 1.5rem 0; gap: 0.75rem; }
   .stat-item .stat-number { font-size: 1.8rem; }
+  .stat-item .stat-label { font-size: 0.8rem; }
   .specialties-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .specialty-card { padding: 1.25rem; }
+  .spec-card-img { height: 140px; }
+  .spec-card-body { padding: 1.25rem; }
   .spec-list { grid-template-columns: 1fr; }
-  .facilities-grid { grid-template-columns: repeat(2, 1fr); }
+  .quals-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .facilities-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   .facility-card { padding: 1.25rem; }
-  .awards-grid { grid-template-columns: 1fr; }
+  .treatment-tag { font-size: 0.82rem; padding: 0.5rem 1rem; }
+  .awards-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .contact-info-col, .contact-form-col { padding: 2rem; }
   .contact-form h3 { font-size: 1.3rem; }
   .container { padding: 0 1.25rem; }
 }
 
 @media (max-width: 480px) {
-  .hero-heading { font-size: 1.9rem; }
+  .hero { padding: 4rem 0 1.5rem; }
+  .hero-heading { font-size: 1.8rem; letter-spacing: 0; }
   .hero-stats-bar { flex-direction: column; gap: 0.75rem; }
   .hero-stat-divider { display: none; }
   .hero-stat-num { font-size: 1.5rem; }
@@ -1159,15 +1200,25 @@ h1, h2, h3, h4, h5, h6 {
   .hero-tag { font-size: 0.65rem; letter-spacing: 1px; }
   .hero-sub { font-size: 0.9rem; }
   .hero-wave { display: none; }
-  .section-title { font-size: 1.6rem; }
+  .section-title { font-size: 1.5rem; }
+  .section-title .title-line { width: 36px; }
+  .section-header { margin-bottom: 1.5rem; }
+  .section-subtitle { font-size: 0.9rem; margin-bottom: 1.5rem; }
   .logo-text { font-size: 1.05rem; }
   .profile-credentials { font-size: 0.9rem; }
   .stats-row { grid-template-columns: 1fr 1fr; }
   .stat-item .stat-number { font-size: 1.5rem; }
   .stat-item .stat-label { font-size: 0.75rem; }
-  .facilities-grid { grid-template-columns: 1fr; }
+  .quals-grid { grid-template-columns: 1fr; }
+  .spec-card-img { height: 120px; }
+  .spec-card-body { padding: 1rem; }
+  .spec-card-body h3 { font-size: 1.1rem; }
+  .treatments-grid { gap: 0.5rem; }
+  .treatment-tag { font-size: 0.78rem; padding: 0.4rem 0.85rem; }
+  .facilities-grid { grid-template-columns: 1fr; gap: 0.6rem; }
   .facility-card { padding: 1rem; display: flex; align-items: center; gap: 1rem; text-align: left; }
   .facility-icon { margin: 0; width: 44px; height: 44px; }
+  .awards-grid { grid-template-columns: 1fr; gap: 0.85rem; }
   .contact-info-col, .contact-form-col { padding: 1.25rem; }
   .form-group input, .form-group textarea { padding: 0.7rem 0.9rem; font-size: 0.9rem; }
   .container { padding: 0 1rem; }
