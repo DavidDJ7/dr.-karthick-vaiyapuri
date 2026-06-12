@@ -216,7 +216,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+  background: url('./assets/hero.png') no-repeat center center/cover;
 }
 
 .hero-overlay {
@@ -323,6 +323,42 @@ h1, h2, h3, h4, h5, h6 {
 .profile-content p {
   margin-bottom: 1rem;
   color: var(--text-muted);
+}
+
+.responsibilities {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #f1f5f9;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+.responsibilities h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+
+.responsibilities ul {
+  list-style: none;
+  padding: 0;
+}
+
+.responsibilities li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.responsibilities li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /* Specialties Section */
